@@ -15,14 +15,14 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
                     <page id="Viewer.1"/>
                 </dock>
                 <split size="407"/>
-                <dock id="" activePageId="DAG.1" focus="true">
+                <dock id="" activePageId="DAG.1">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
                 </dock>
             </splitter>
             <split size="615"/>
-            <dock id="" activePageId="Properties.1">
+            <dock id="" activePageId="Properties.1" focus="true">
                 <page id="Properties.1"/>
             </dock>
         </splitter>
@@ -52,7 +52,7 @@ NoOp {
  addUserKnob {26 ""}
  addUserKnob {22 commit -STARTLINE T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdCommit()\ncmd = nuke.thisNode()\['comment'].getValue()\ngit.param = cmd\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)"}
  addUserKnob {1 comment -STARTLINE}
- comment "add some thing"
+ comment "add constant4"
  addUserKnob {26 ""}
  addUserKnob {22 add l "add to repository" T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdAdd()\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)\n\n\t\n" +STARTLINE}
  addUserKnob {22 status l "status repository" T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdStatus()\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
