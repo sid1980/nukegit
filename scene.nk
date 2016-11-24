@@ -75,28 +75,16 @@ Merge2 {
  xpos 174
  ypos 17
 }
-Constant {
- inputs 0
- name Constant4
- xpos 333
- ypos -103
-}
-Merge2 {
- inputs 2
- name Merge3
- xpos 284
- ypos 17
-}
 NoOp {
  inputs 0
  name GIT
  xpos -193
  ypos -104
  addUserKnob {20 User}
- addUserKnob {26 text l "" +STARTLINE T "On branch master\nnothing to commit, working directory clean\n"}
+ addUserKnob {26 text l "" +STARTLINE T "\[master bf0d9f6] remove constant5\n 2 files changed, 107 insertions(+), 15 deletions(-)\n rename scene.nk.autosave => scene.nk (93%)\n create mode 100644 scene.nk~\n"}
  addUserKnob {26 "" +STARTLINE}
  addUserKnob {1 comment}
- comment "test loading"
+ comment "remove constant5"
  addUserKnob {22 commit T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\nprint 'Test button '\n\nimport gitnuke\nreload(gitnuke)\ngit = gitnuke.NukeGit()\n\nprint 'Test button '\ncmd = nuke.thisNode()\['comment'].getValue()\nprint cmd\n\ngit.commit_command(cmd)\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
  addUserKnob {22 add l "add to repository" T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.add_command()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)\n\n\t\n" +STARTLINE}
  addUserKnob {22 status l "status repository" T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.status_command()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
