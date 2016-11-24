@@ -4,18 +4,27 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
     <window x="0" y="0" w="1920" h="1050" screen="0">
         <splitter orientation="1">
-            <split size="45"/>
+            <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="925"/>
-            <dock id="" activePageId="DAG.1" focus="true">
-                <page id="DAG.1"/>
-            </dock>
-            <split size="926"/>
-            <dock id="" activePageId="uk.co.thefoundry.scripteditor.1">
-                <page id="Viewer.1"/>
-                <page id="uk.co.thefoundry.scripteditor.1"/>
+            <split size="1076" stretch="1"/>
+            <splitter orientation="2">
+                <split size="578"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="407"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="780"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.scripteditor.2"/>
             </dock>
         </splitter>
     </window>
@@ -78,28 +87,18 @@ Merge2 {
  xpos 284
  ypos 17
 }
-Constant {
- inputs 0
- name Constant5
- xpos 444
- ypos -107
-}
-Merge2 {
- inputs 2
- name Merge4
- xpos 394
- ypos 17
-}
 NoOp {
  inputs 0
  name GIT
- xpos -267
- ypos -15
+ xpos -193
+ ypos -104
  addUserKnob {20 User}
+ addUserKnob {26 text l "" +STARTLINE T "On branch master\nnothing to commit, working directory clean\n"}
+ addUserKnob {26 "" +STARTLINE}
  addUserKnob {1 comment}
  comment "test loading"
- addUserKnob {22 commit T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\nprint 'Test button '\n\nimport gitnuke\nreload(gitnuke)\ngit = gitnuke.NukeGit()\n\nprint 'Test button '\ncmd = nuke.thisNode()\['comment'].getValue()\nprint cmd\n\n#git.commit_command(cmd)\n#git.get_content()" +STARTLINE}
- addUserKnob {22 add l "add to repository" T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.add_command()\ngit.get_content()" +STARTLINE}
- addUserKnob {22 status l "status repository" T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.status_command()\ngit.get_content()" +STARTLINE}
- addUserKnob {22 init_repository T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.init_repository()\ngit.get_content()" +STARTLINE}
+ addUserKnob {22 commit T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\nprint 'Test button '\n\nimport gitnuke\nreload(gitnuke)\ngit = gitnuke.NukeGit()\n\nprint 'Test button '\ncmd = nuke.thisNode()\['comment'].getValue()\nprint cmd\n\ngit.commit_command(cmd)\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
+ addUserKnob {22 add l "add to repository" T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.add_command()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)\n\n\t\n" +STARTLINE}
+ addUserKnob {22 status l "status repository" T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.status_command()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
+ addUserKnob {22 init_repository T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.init_repository()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
 }
