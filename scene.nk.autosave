@@ -1,0 +1,117 @@
+#! C:/Program Files/Nuke9.0v6/nuke-9.0.6.dll -nx
+version 9.0 v6
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1920" h="1050" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1076" stretch="1"/>
+            <splitter orientation="2">
+                <split size="578"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="407"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="780"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.scripteditor.2"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name D:/!!!python_works/event2016/nukegit/scene.nk
+ format "2100 858 0 0 2100 858 1 Urfin_2KStereo"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+}
+Viewer {
+ inputs 0
+ frame 1
+ frame_range 1-100
+ name Viewer1
+ xpos -40
+ ypos -10
+}
+Constant {
+ inputs 0
+ name Constant1
+ xpos 25
+ ypos -105
+}
+Constant {
+ inputs 0
+ name Constant2
+ xpos 141
+ ypos -105
+}
+Merge2 {
+ inputs 2
+ name Merge1
+ xpos 64
+ ypos 17
+}
+Constant {
+ inputs 0
+ name Constant3
+ xpos 239
+ ypos -104
+}
+Merge2 {
+ inputs 2
+ name Merge2
+ xpos 174
+ ypos 17
+}
+Constant {
+ inputs 0
+ name Constant4
+ xpos 333
+ ypos -103
+}
+Merge2 {
+ inputs 2
+ name Merge3
+ xpos 284
+ ypos 17
+}
+Constant {
+ inputs 0
+ name Constant5
+ xpos 444
+ ypos -107
+}
+Merge2 {
+ inputs 2
+ name Merge4
+ xpos 394
+ ypos 17
+}
+NoOp {
+ inputs 0
+ name GIT
+ selected true
+ xpos -193
+ ypos -104
+ addUserKnob {20 User}
+ addUserKnob {26 text l "" +STARTLINE}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {1 comment}
+ comment "test loading"
+ addUserKnob {22 commit T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\nprint 'Test button '\n\nimport gitnuke\nreload(gitnuke)\ngit = gitnuke.NukeGit()\n\nprint 'Test button '\ncmd = nuke.thisNode()\['comment'].getValue()\nprint cmd\n\ngit.commit_command(cmd)\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
+ addUserKnob {22 add l "add to repository" T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.add_command()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)\n\n\t\n" +STARTLINE}
+ addUserKnob {22 status l "status repository" T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.status_command()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
+ addUserKnob {22 init_repository T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.init_repository()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
+}
