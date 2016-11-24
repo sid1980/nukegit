@@ -8,23 +8,22 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="1022" stretch="1"/>
+            <split size="1241" stretch="1"/>
             <splitter orientation="2">
                 <split size="578"/>
                 <dock id="" activePageId="Viewer.1">
                     <page id="Viewer.1"/>
                 </dock>
                 <split size="407"/>
-                <dock id="" activePageId="DAG.1">
+                <dock id="" activePageId="DAG.1" focus="true">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
                 </dock>
             </splitter>
-            <split size="834"/>
-            <dock id="" activePageId="uk.co.thefoundry.scripteditor.2" focus="true">
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
                 <page id="Properties.1"/>
-                <page id="uk.co.thefoundry.scripteditor.2"/>
             </dock>
         </splitter>
     </window>
@@ -45,6 +44,29 @@ Viewer {
  xpos -40
  ypos -10
 }
+NoOp {
+ inputs 0
+ name GIT
+ xpos 182
+ ypos -191
+ addUserKnob {20 User}
+ addUserKnob {22 init_package_path T "import sys\n\ncmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\n\nif cmd not in sys.path:\n    sys.path.append(cmd)" +STARTLINE}
+ addUserKnob {26 text l "" +STARTLINE T "On branch master\nChanges to be committed:\n  (use \"git reset HEAD <file>...\" to unstage)\n\n\tnew file:   scene.nk.autosave\n\n"}
+ addUserKnob {26 ""}
+ addUserKnob {22 log T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.log_command()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
+ addUserKnob {22 diff T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.diff_command()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
+ addUserKnob {22 diffstage l "diff --stage" -STARTLINE T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.diff_command('--staged')\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)"}
+ addUserKnob {22 diffcached l "diff --cached" -STARTLINE T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.diff_command('--cached')\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)"}
+ addUserKnob {26 ""}
+ addUserKnob {22 commit -STARTLINE T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdCommit()\ncmd = nuke.thisNode()\['comment'].getValue()\ngit.param = cmd\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)"}
+ addUserKnob {1 comment -STARTLINE}
+ comment "add some thing"
+ addUserKnob {26 ""}
+ addUserKnob {22 add l "add to repository" T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdAdd()\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)\n\n\t\n" +STARTLINE}
+ addUserKnob {22 status l "status repository" T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdStatus()\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
+ addUserKnob {22 statusshort l "status --short" -STARTLINE T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdStatus()\ngit.short = True\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)"}
+ addUserKnob {22 init_repository T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdInitRepository()\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
+}
 Constant {
  inputs 0
  name Constant1
@@ -63,34 +85,15 @@ Merge2 {
  xpos 64
  ypos 17
 }
-push 0
+Constant {
+ inputs 0
+ name Constant3
+ xpos 256
+ ypos -103
+}
 Merge2 {
  inputs 2
  name Merge2
- xpos 174
+ xpos 256
  ypos 17
-}
-NoOp {
- inputs 0
- name GIT
- selected true
- xpos -136
- ypos -135
- addUserKnob {20 User}
- addUserKnob {22 init_package_path T "import sys\n\ncmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\n\nif cmd not in sys.path:\n    sys.path.append(cmd)" +STARTLINE}
- addUserKnob {26 text l "" +STARTLINE T ""}
- addUserKnob {26 ""}
- addUserKnob {22 log T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.log_command()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
- addUserKnob {22 diff T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.diff_command()\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
- addUserKnob {22 diffstage l "diff --stage" -STARTLINE T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.diff_command('--staged')\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)"}
- addUserKnob {22 diffcached l "diff --cached" -STARTLINE T "cmd = r'd:\\!!!python_works\\work_in_progress\\sandbox\\gitnuke'\nif cmd not in sys.path: sys.path.append(cmd)\n\nimport gitnuke\nreload(gitnuke)\n\ngit = gitnuke.NukeGit()\ngit.diff_command('--cached')\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)"}
- addUserKnob {26 ""}
- addUserKnob {22 commit -STARTLINE T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdCommit()\ncmd = nuke.thisNode()\['comment'].getValue()\nprint cmd\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)"}
- addUserKnob {1 comment -STARTLINE}
- comment "remove constant5"
- addUserKnob {26 ""}
- addUserKnob {22 add l "add to repository" T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdAdd()\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)\n\n\t\n" +STARTLINE}
- addUserKnob {22 status l "status repository" T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdStatus()\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
- addUserKnob {22 statusshort l "status --short" -STARTLINE T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdStatus()\ngit.short = True\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)"}
- addUserKnob {22 init_repository T "import gitnuke\nreload(gitnuke)\n\ngit = gitnuke.CmdInitRepository()\ngit.execute()\n\nout = git.get_content()\nnuke.thisNode()\['text'].setValue(out)" +STARTLINE}
 }
